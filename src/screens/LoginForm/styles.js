@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     textAlign: "center",
     paddingVertical: 40,
-    color: "red",
+    color: "#1d3d6f",
   },
   inputView: {
     gap: 15,
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     paddingHorizontal: 20,
-    borderColor: "red",
+    borderColor: "#1d3d6f",
     borderWidth: 1,
     borderRadius: 7,
   },
@@ -49,10 +49,10 @@ const styles = StyleSheet.create({
   },
   forgetText: {
     fontSize: 11,
-    color: "red",
+    color: "#1d3d6f",
   },
   button: {
-    backgroundColor: "red",
+    backgroundColor: "#1d3d6f",
     height: 45,
     borderColor: "gray",
     borderWidth: 1,
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     color: "gray",
   },
   signup: {
-    color: "red",
+    color: "#1d3d6f",
     fontSize: 13,
   },
 });

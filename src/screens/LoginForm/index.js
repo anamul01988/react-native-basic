@@ -12,7 +12,7 @@ import {
   View,
 } from "react-native";
 import styles from "./styles";
-const logo = require("./../../assets/images/logo.png");
+const logo = require("./../../assets/images/tiktok.png");
 const facebook = require("./../../assets/images/facebook.png");
 const linkedin = require("./../../assets/images/linkedin.png");
 const tiktok = require("./../../assets/images/tiktok.png");
