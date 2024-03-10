@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, TouchableOpacity } from "react-native";
 import {
   // Button,
   // Platform,
@@ -10,7 +10,9 @@ import {
 import { LoginScreen } from "./src/screens";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import ToastManager, { Toast } from "toastify-react-native";
 function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -60,16 +62,29 @@ function DetailsScreen({ navigation }) {
           title="Go back to first screen in stack"
           onPress={() => navigation.popToTop()}
         />
+        <ToastManager />
+        <TouchableOpacity
+          onPress={() => Toast.success("Promised is resolved")}
+          style={styles.buttonStyle}
+        >
+          <Text>SHOW SOME AWESOMENESS!</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
 }
-const Stack = createNativeStackNavigator();
+// const Stack = createNativeStackNavigator();
+const Stack = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
       {/* <LoginScreen /> */}
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          tabBarActiveTintColor: "#e91e63",
+        }}
+      >
         <Stack.Screen
           name="Home"
           component={HomeScreen}
@@ -82,17 +97,37 @@ export default function App() {
             headerTitleStyle: {
               fontWeight: "bold",
             },
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="home" color={color} size={size} />
+            ),
           }}
         />
         <Stack.Screen
           name="Details"
           component={DetailsScreen}
-          options={{ title: "Details" }}
+          options={{
+            title: "Details",
+            tabBarLabel: "Updates",
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="bell" color={color} size={size} />
+            ),
+            tabBarBadge: 3,
+          }}
         />
         <Stack.Screen
           name="Login"
           component={LoginScreen}
-          options={{ title: "Login page" }}
+          // options={{ title: "Login page" }}
+          options={{
+            tabBarLabel: "profile",
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="account"
+                color={color}
+                size={size}
+              />
+            ),
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -113,5 +148,12 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
+  },
+  buttonStyle: {
+    marginTop: 10,
+    backgroundColor: "white",
+    borderColor: "green",
+    borderWidth: 2,
+    padding: 10,
   },
 });
