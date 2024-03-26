@@ -13,10 +13,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import ToastManager, { Toast } from "toastify-react-native";
+import ButtonAbsolute from "./src/components/ButtonAbsolute";
 function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
+      {/* <ButtonAbsolute /> */}
       <View style={{ flexDirection: "row", gap: 20, marginTop: 20 }}>
         <Button
           title="Go to Details"
